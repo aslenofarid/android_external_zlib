@@ -31,6 +31,8 @@ tautan=https://cirrus-ci.com/build/$CIRRUS_BUILD_ID
 
 cd $WORKDIR/rom/$nama_rom/out/target/product/$perangkat
 
+curl -s https://api.telegram.org/bot$tokentl/sendMessage -d chat_id=$idtl -d text="📤 Uploading Build: $nama_file"
+
 curl -T $nama_file temp.sh; echo
 
 rm -rf $nama_file
