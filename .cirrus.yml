@@ -26,16 +26,16 @@ task:
      - echo "$CREDENTIALS" > ~/.git-credentials
      - git config --global credential.helper store --file=~/.git-credentials
 
-  Sync_script:
+  sync_script:
      - bash scripts/sync.sh
 
-  Build_script:
+  build_script:
      - bash scripts/building.sh
 
-  Ccache-statusinfo_script:
+  ccache-statusinfo_script:
      - set -e
      - export CCACHE_DIR=$WORKDIR/ccache
      - ccache -s
 
-  UploadROM_script:
+  uploadROM_script:
      - bash scripts/collecting.sh
