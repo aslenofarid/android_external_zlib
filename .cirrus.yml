@@ -27,10 +27,10 @@ task:
      - git config --global credential.helper store --file=~/.git-credentials
 
   Sync_script:
-     -bash scripts/sync.sh
+     - bash scripts/sync.sh
 
   Build_script:
-     -bash scripts/building.sh
+     - bash scripts/building.sh
 
   Ccach-statusinfo_script:
      - set -e
@@ -38,4 +38,4 @@ task:
      - ccache -s
 
   UploadROM_script:
-     -bash scripts/collecting.sh
+     - bash scripts/collecting.sh
