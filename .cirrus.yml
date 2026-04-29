@@ -41,4 +41,3 @@ task:
 
   UploadROM_script:
      - ./scripts/collecting.sh
-
