@@ -17,10 +17,10 @@ task:
     cpu: 8
     memory: 32G
 
-  Mengload-ccache_background_script:
+  load-ccache_background_script:
      - ./scripts/loading_ccache.sh
 
-  local-mani_script:
+  local-manifest_script:
      - git config --global user.name "aslenofarid"
      - git config --global user.email "yoniasleno.farid14@gmail.com"
      - echo "$CREDENTIALS" > ~/.git-credentials
@@ -32,7 +32,7 @@ task:
   Build_script:
      - bash scripts/building.sh
 
-  Ccach-statusinfo_script:
+  Ccache-statusinfo_script:
      - set -e
      - export CCACHE_DIR=$WORKDIR/ccache
      - ccache -s
