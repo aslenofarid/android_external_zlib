@@ -31,7 +31,7 @@ tautan=https://cirrus-ci.com/build/$CIRRUS_BUILD_ID
 
 cd $WORKDIR/rom/$nama_rom/out/target/product/$perangkat
 
-curl -s https://api.telegram.org/bot$tokentl/sendMessage -d chat_id=$idtl -d text="📤 Uploading Build: $nama_file"
+curl -s https://api.telegram.org/bot$TG_TOKEN/sendMessage -d chat_id=$TG_CHAT_ID -d text="📤 Uploading Build: $nama_file"
 
 curl -T $nama_file temp.sh; echo
 
@@ -52,7 +52,7 @@ echo -e \
 <b>📕 MD5 :</b> <code>"$(md5sum *zip | cut -d' ' -f1)"</code>
 <b>📘 SHA1 :</b> <code>"$(sha1sum *zip | cut -d' ' -f1)"</code>
 <b>==============================</b>
-<b>🌀 Maintainer : <a href=\"${maintainer}\">$USER</a></b>
+<b>🌀 Maintainer : <a href=\"${maintainer}\">aslenofarid</a></b>
 " > tg.html
 TG_TEXT=$(< tg.html)
 pesan_telegram "$TG_TEXT"
