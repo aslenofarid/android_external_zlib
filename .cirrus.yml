@@ -12,8 +12,6 @@ env:
 task:
   name: "Setting Up"
   timeout_in: 120m
-  skip: $CIRRUS_BRANCH == 'main'
-  only_if: $CIRRUS_REPO_OWNER == 'aslenofarid'
   container:
     image: memedo/paiskomom:knjt
     cpu: 8
