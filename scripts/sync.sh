@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-set -exv
+set -e
 
-name_rom=$(grep init $CIRRUS_WORKING_DIR/build.sh -m 1 | cut -d / -f 4)
+nama_rom=$(grep init $CIRRUS_WORKING_DIR/build.sh -m 1 | cut -d / -f 4)
 only_sync=$(grep 'repo sync' $CIRRUS_WORKING_DIR/build.sh)
 a=$(grep 'Cannot remove project' Sync-rom.log -m1|| true)
 b=$(grep "^fatal: remove-project element specifies non-existent project" Sync-rom.log -m1 || true)
