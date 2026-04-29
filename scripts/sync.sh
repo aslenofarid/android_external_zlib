@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -e
+set -exv
 
 nama_rom=$(grep init $CIRRUS_WORKING_DIR/build.sh -m 1 | cut -d / -f 4)
 only_sync=$(grep 'repo sync' $CIRRUS_WORKING_DIR/build.sh)
