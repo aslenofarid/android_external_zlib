@@ -1,9 +1,9 @@
 env:
 # ENCRYPTED
-  RCLONECONFIG_DRIVE: ""
-  TG_TOKEN: ""
-  TG_CHAT_ID: ""
-  CREDENTIALS: ""
+  RCLONECONFIG_DRIVE: "ENCRYPTED[ac69f2ea296f664780cefc4255d32d82e1aa83cdbbbfd1878f424ae6a80c832aa223a4caea661c02d91c8b575d08d52c]"
+  TG_TOKEN: "ENCRYPTED[4326415f4acc435fb4c3849c16d2053e5a6b2d28b53d2618e87f31de166791def1867e131289bcf2b6ad61cb464a2fad]"
+  TG_CHAT_ID: "ENCRYPTED[44a602fbf52c71e2b429bea0b1622c05a6d7643b34de8aec767c4d94bc264e09a787a4b307a7717fdea6b07986c4fbd2]"
+  CREDENTIALS: "ENCRYPTED[c77743ba18cc41a9032db101e043b4c277873fb7f115368f50bf6feeab34486928f7051d39fa1d2f6ada8a69f2ee79c6]"
 
 # FLAG
   WORKDIR: "/tmp"
@@ -21,8 +21,8 @@ task:
      - ./scripts/loading_ccache.sh
 
   local-mani_script:
-     - git config --global user.name ""
-     - git config --global user.email ""
+     - git config --global user.name "aslenofarid"
+     - git config --global user.email "yoniasleno.farid14@gmail.com"
      - echo "$CREDENTIALS" > ~/.git-credentials
      - git config --global credential.helper store --file=~/.git-credentials
 
