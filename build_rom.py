@@ -13,6 +13,7 @@ CHAT_ID = os.environ.get('TG_CHAT_ID')
 RCLONE_CONF = os.environ.get('RCLONE_CONF')
 GH_TOKEN = os.environ.get('GH_TOKEN')
 GH_USERNAME = os.environ.get('GH_USERNAME')
+BUILD_HOSTNAME = os.environ.get('BUILD_HOSTNAME')
 CIRRUS_TASK_ID = os.environ.get('CIRRUS_TASK_ID')
 
 MESSAGE_ID_FILE = "/tmp/tg_msg.txt"
@@ -186,7 +187,7 @@ def stage_build():
     export CCACHE_DIR=/tmp/ccache
     export CCACHE_EXEC=$(which ccache)
     ccache -M 50G
-    timeout 95m bash -c 'source build/envsetup.sh && breakfast {DEVICE_CODENAME} user && brunch {DEVICE_CODENAME}'
+    timeout 95m bash -c 'source build/envsetup.sh && export KBUILD_BUILD_USER={GH_USERNAME} && export BUILD_USERNAME={GH_USERNAME} && export KBUILD_BUILD_HOST={BUILD_HOSTNAME} && export BUILD_HOSTNAME={BUILD_HOSTNAME} &&  breakfast {DEVICE_CODENAME} user && brunch {DEVICE_CODENAME}'
     """
     
     start_time = time.time()
