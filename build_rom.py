@@ -26,7 +26,7 @@ DEVICE_REPOSITORIES = [
     {"name": "Device Tree", "url": "https://github.com/aslenofarid/device_asus_X00TD", "branch": "lineage-17.1", "path": "device/asus/X00TD"},
     {"name": "Device Common Tree", "url": "https://github.com/aslenofarid/device_asus_sdm660-common", "branch": "lineage-17.1", "path": "device/asus/sdm660-common"},
     {"name": "Vendor Tree", "url": "https://github.com/aslenofarid/proprietary_vendor_asus", "branch": "lineage-17.1", "path": "vendor/asus"},
-    {"name": "Kernel Tree", "url": "https://github.com/AslenoLineageStuff/msm-4.4", "branch": "kernel.lnx.4.4.r42-rel", "path": "kerel/asus/sdm660"},
+    {"name": "Kernel Tree", "url": "https://github.com/AslenoLineageStuff/msm-4.4", "branch": "kernel.lnx.4.4.r42-rel", "path": "kernel/asus/sdm660"},
 ]
 
 def get_message_id():
