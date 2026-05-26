@@ -16,15 +16,16 @@ GH_USERNAME = os.environ.get('GH_USERNAME')
 CIRRUS_TASK_ID = os.environ.get('CIRRUS_TASK_ID')
 
 MESSAGE_ID_FILE = "/tmp/tg_msg.txt"
-MANIFEST_LINK = "https://github.com/lineageos-q-mean/android.git"
+MANIFEST_LINK = "https://github.com/AslenoLineageStuff/android.git"
 ROM_BRANCH = "lineage-17.1"
 DEVICE_CODENAME = "X00TD"
 BANNER_IMAGE = "https://github.com/texascake/texascake/raw/refs/heads/main/los.png"
 
 DEVICE_REPOSITORIES = [
-    {"name": "Device Tree", "url": "https://github.com/lineageos-q-mean/android_device_asus_X00TD.git", "branch": "lineage-17.1", "path": "device/asus/X00TD"},
-    {"name": "Vendor Tree", "url": "https://github.com/lineageos-q-mean/proprietary_vendor_asus.git", "branch": "lineage-17.1", "path": "vendor/asus"},
-    {"name": "Common Tree", "url": "https://github.com/lineageos-q-mean/android_device_asus_sdm660-common.git", "branch": "lineage-17.1", "path": "device/asus/sdm660-common"}
+    {"name": "Device Tree", "url": "https://github.com/aslenofarid/device_asus_X00TD", "branch": "lineage-17.1", "path": "device/asus/X00TD"},
+    {"name": "Device Common Tree", "url": "https://github.com/aslenofarid/device_asus_sdm660-common", "branch": "lineage-17.1", "path": "device/asus/sdm660-common"},
+    {"name": "Vendor Tree", "url": "https://github.com/aslenofarid/proprietary_vendor_asus", "branch": "lineage-17.1", "path": "vendor/asus"},
+    {"name": "Kernel Tree", "url": "https://github.com/AslenoLineageStuff/msm-4.4", "branch": "kernel.lnx.4.4.r42-rel", "path": "kerel/asus/sdm660"},
 ]
 
 def get_message_id():
@@ -177,7 +178,7 @@ def stage_build():
     use_ccache = setup_rclone()
     if use_ccache:
         send_telegram("🔄 <b>Status:</b> Downloading ccache from Google Drive...")
-        run_command("rclone copy queen:reload/ccache.tar.gz /tmp/ && tar -xzf /tmp/ccache.tar.gz -C /tmp", "Download Ccache", ignore_error=True)
+        run_command("rclone copy build:reload/ccache.tar.gz /tmp/ && tar -xzf /tmp/ccache.tar.gz -C /tmp", "Download Ccache", ignore_error=True)
         
     send_telegram("⏳ <b>Status:</b> Starting compilation...")
     build_command = f"""
@@ -204,13 +205,13 @@ def stage_build():
         # -- ADDITION: Upload ccache if build success --
         if use_ccache:
             send_telegram("☁️ <b>Status:</b> Saving updated ccache to Google Drive...")
-            run_command("tar -czf /tmp/ccache.tar.gz -C /tmp ccache && rclone copy /tmp/ccache.tar.gz queen:reload/", "Upload Ccache", ignore_error=True)
+            run_command("tar -czf /tmp/ccache.tar.gz -C /tmp ccache && rclone copy /tmp/ccache.tar.gz build:reload/", "Upload Ccache", ignore_error=True)
             
     else:
         send_telegram("❌ <b>BUILD FAILED!</b>\n\nExecuting ccache rescue...")
         if use_ccache:
             send_telegram("☁️ <b>Status:</b> Saving ccache to Google Drive...")
-            run_command("tar -czf /tmp/ccache.tar.gz -C /tmp ccache && rclone copy /tmp/ccache.tar.gz queen:reload/", "Upload Ccache")
+            run_command("tar -czf /tmp/ccache.tar.gz -C /tmp ccache && rclone copy /tmp/ccache.tar.gz build:reload/", "Upload Ccache")
         send_telegram("ℹ️ <b>Info:</b> Ccache has been secured. Script terminated due to build error.")
         sys.exit(1)
 
@@ -237,7 +238,7 @@ def stage_upload():
     if zip_file_list:
         file_path = zip_file_list[0]
         file_name = os.path.basename(file_path)
-        drive_destination = "queen:ROM_Builds"
+        drive_destination = "build:ROM_Builds"
         
         try:
             print(f"\n[INFO] Calculating MD5 for {file_name}...")
