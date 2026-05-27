@@ -187,7 +187,7 @@ def stage_build():
     export CCACHE_DIR=/tmp/ccache
     export CCACHE_EXEC=$(which ccache)
     ccache -M 50G
-    timeout 95m bash -c 'source build/envsetup.sh && export KBUILD_BUILD_USER={GH_USERNAME} && export BUILD_USERNAME={GH_USERNAME} && export KBUILD_BUILD_HOST={BUILD_HOSTNAME} && export BUILD_HOSTNAME={BUILD_HOSTNAME} && export TZ=Asia/Jakarta &&  breakfast {DEVICE_CODENAME} user && brunch {DEVICE_CODENAME}'
+    timeout 95m bash -c 'source build/envsetup.sh && export KBUILD_BUILD_USER={GH_USERNAME} && export BUILD_USERNAME={GH_USERNAME} && export KBUILD_BUILD_HOST={BUILD_HOSTNAME} && export BUILD_HOSTNAME={BUILD_HOSTNAME} && export TZ=Asia/Jakarta &&  lunch lineage_{DEVICE_CODENAME}user && mka bacon'
     """
     
     start_time = time.time()
