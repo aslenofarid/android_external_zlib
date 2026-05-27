@@ -18,7 +18,7 @@ CIRRUS_TASK_ID = os.environ.get('CIRRUS_TASK_ID')
 
 MESSAGE_ID_FILE = "/tmp/tg_msg.txt"
 MANIFEST_LINK = "https://github.com/AslenoLineageStuff/android.git"
-ROM_BRANCH = "lineage-17.1"
+ROM_BRANCH = "lineage-17.1-new"
 DEVICE_CODENAME = "X00TD"
 BANNER_IMAGE = "https://github.com/texascake/texascake/raw/refs/heads/main/los.png"
 
